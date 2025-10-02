@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 export interface TelemetryData {
-  full_data: any;
+  full_data: Record<string, Record<string, number>>;
   columns: string[];
-  head: Record<string, any>;
+  head: Record<string, Record<string, number>>;
 }
 
 export const api = {

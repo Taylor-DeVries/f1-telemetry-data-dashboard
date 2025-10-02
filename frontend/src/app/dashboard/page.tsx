@@ -10,6 +10,7 @@ const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 export default function Dashboard() {
   const [telemetryData, setTelemetryData] = useState<TelemetryData | null>(null);
   const [selectedColumns, setSelectedColumns] = useState<string[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [plotData, setPlotData] = useState<any[]>([]);
   const [showAnalysisGuide, setShowAnalysisGuide] = useState(false);
   const [showStrategyGuide, setShowStrategyGuide] = useState(false);
@@ -379,7 +380,7 @@ export default function Dashboard() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[1, 2, 3].map((sectorNum) => {
                 const sectorIndices = Object.entries(telemetryData.full_data.sector)
-                  .filter(([_, value]) => value === sectorNum)
+                  .filter(([, value]) => value === sectorNum)
                   .map(([index]) => parseInt(index));
                 
                 if (sectorIndices.length === 0) return null;

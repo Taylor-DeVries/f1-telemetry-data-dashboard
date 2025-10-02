@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import axios from 'axios';
+import { TelemetryData } from '@/lib/api';
 
 interface DemoDataGeneratorProps {
-  onDataGenerated: (data: any) => void;
+  onDataGenerated: (data: TelemetryData) => void;
   onClose: () => void;
 }
 

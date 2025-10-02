@@ -4,12 +4,13 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import DemoDataGenerator from '@/components/DemoDataGenerator';
+import { TelemetryData } from '@/lib/api';
 
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 export default function CompareLaps() {
-  const [lap1Data, setLap1Data] = useState<any>(null);
-  const [lap2Data, setLap2Data] = useState<any>(null);
+  const [lap1Data, setLap1Data] = useState<TelemetryData | null>(null);
+  const [lap2Data, setLap2Data] = useState<TelemetryData | null>(null);
   const [selectedMetric, setSelectedMetric] = useState('speed');
   const [showGeneratorFor, setShowGeneratorFor] = useState<1 | 2 | null>(null);
   const router = useRouter();
@@ -35,7 +36,7 @@ export default function CompareLaps() {
     }
   };
 
-  const handleDemoDataGenerated = (data: any) => {
+  const handleDemoDataGenerated = (data: TelemetryData) => {
     if (showGeneratorFor === 1) {
       setLap1Data(data);
     } else if (showGeneratorFor === 2) {

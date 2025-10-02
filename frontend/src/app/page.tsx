@@ -30,7 +30,7 @@ export default function Home() {
     setError(errorMessage);
   };
 
-  const handleDemoDataGenerated = (data: any) => {
+  const handleDemoDataGenerated = (data: TelemetryData) => {
     setShowDemoGenerator(false);
     setError('');
     setSuccess('Demo data generated successfully! Redirecting to dashboard...');
