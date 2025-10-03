@@ -2,6 +2,8 @@
 
 A professional-grade full-stack web application for analyzing F1 racing telemetry data with interactive visualizations, lap comparisons, and race strategy insights. Built with Next.js API routes for seamless deployment and optimal performance.
 
+<img width="1241" height="767" alt="Screenshot 2025-10-02 at 10 51 45 PM" src="https://github.com/user-attachments/assets/8e682e27-1d1a-4570-beb8-9b089b160776" />
+
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Visit_Now-green?style=for-the-badge)](https://f1-telemetry-dashboard.vercel.app/)
 ![F1 Telemetry Dashboard](https://img.shields.io/badge/F1-Telemetry%20Dashboard-red?style=for-the-badge&logo=formula1)
 ![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=flat-square&logo=next.js)
@@ -39,7 +41,6 @@ A professional-grade full-stack web application for analyzing F1 racing telemetr
 - **Data Processing**: Native JavaScript/TypeScript
 - **CSV Parsing**: csv-parser library
 - **Deployment**: Vercel 
-
 
 ## 📊 Demo Data & Sample Files
 
@@ -101,25 +102,3 @@ Upload CSV files with the following columns:
 ### Live Demo
 Visit the live application: **[https://f1-telemetry-dashboard.vercel.app/](https://f1-telemetry-dashboard.vercel.app/)**
 
-
-## 🎯 Future Enhancements
-
-- [x] ~~Sector timing breakdown with detailed analysis~~ ✅ **COMPLETED**
-- [x] ~~Demo data generator~~ ✅ **COMPLETED**
-- [ ] Live streaming mode (simulate real-time telemetry)
-- [ ] Historical lap database and comparison
-- [ ] Advanced analytics (cornering G-forces, lap time prediction)
-- [ ] Export charts as images/PDF reports
-- [ ] Multi-lap overlay (compare 3+ laps simultaneously)
-- [ ] Track map integration with telemetry overlay
-- [ ] Authentication and user sessions
-
-## 📝 Project Highlights
-
-This project demonstrates:
-- **Full-Stack Development** with Next.js API routes
-- **Data Visualization** with interactive charts
-- **Real-time Data Processing** and analysis
-- **Modern Web Development** practices
-- **F1 Engineering Domain Knowledge**
-- **Professional UI/UX Design**
