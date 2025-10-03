@@ -4,10 +4,10 @@
   "description": "A professional-grade F1 telemetry dashboard with interactive visualizations and race strategy insights",
   "private": true,
   "scripts": {
-    "dev": "cd frontend && npm run dev",
-    "build": "cd frontend && npm run build",
-    "start": "cd frontend && npm run start",
-    "install-deps": "cd frontend && npm install"
+    "dev": "cd app && npm run dev",
+    "build": "cd app && npm run build",
+    "start": "cd app && npm run start",
+    "install-deps": "cd app && npm install"
   },
   "keywords": [
     "f1",
