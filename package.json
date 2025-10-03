@@ -1,0 +1,28 @@
+{
+  "name": "f1-telemetry-dashboard",
+  "version": "1.0.0",
+  "description": "A professional-grade F1 telemetry dashboard with interactive visualizations and race strategy insights",
+  "private": true,
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "cd frontend && npm run start",
+    "install-deps": "cd frontend && npm install"
+  },
+  "keywords": [
+    "f1",
+    "formula1",
+    "telemetry",
+    "dashboard",
+    "data-visualization",
+    "nextjs",
+    "typescript",
+    "motorsport"
+  ],
+  "author": "Taylor De Vries",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/telemetry-data-dashboard.git"
+  }
+}
