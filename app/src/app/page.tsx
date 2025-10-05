@@ -148,7 +148,6 @@ export default function Home() {
 
         {/* Footer */}
         <div className="text-center mt-16 text-gray-400">
-          <p>Built with Next.js, FastAPI, and Plotly.js</p>
         </div>
       </div>
 
