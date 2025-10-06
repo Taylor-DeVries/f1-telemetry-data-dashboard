@@ -90,8 +90,6 @@ export default function ComparisonDashboard({ lap1Data: initialLap1Data, lap2Dat
   
   const time1 = lap1Data?.metadata?.lap_time || 89.158;
   const time2 = lap2Data?.metadata?.lap_time || 89.340;
-  const gap = time1 - time2;
-  // const gapString = gap < 0 ? `${gap.toFixed(3)}s` : `+${gap.toFixed(3)}s`;
 
   return (
     <div className="min-h-screen bg-black">

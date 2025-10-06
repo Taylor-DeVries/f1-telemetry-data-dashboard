@@ -28,7 +28,7 @@ export default function TrackMap({ track, teamColor }: TrackMapProps) {
         >
           {/* Track outline */}
           <path
-            d={track.layout}
+            d={track.layout || "M50,100 Q150,50 250,100 Q150,150 50,100"}
             fill="none"
             stroke="white"
             strokeWidth="3"
@@ -37,7 +37,7 @@ export default function TrackMap({ track, teamColor }: TrackMapProps) {
           
           {/* Track racing line */}
           <path
-            d={track.layout}
+            d={track.layout || "M50,100 Q150,50 250,100 Q150,150 50,100"}
             fill="none"
             stroke={teamColor}
             strokeWidth="2"

@@ -19,6 +19,7 @@ export interface F1Track {
   firstGP?: number;
   laps?: number;
   lapRecord?: string;
+  layout?: string;
 }
 
 export const F1_DRIVERS: F1Driver[] = [
