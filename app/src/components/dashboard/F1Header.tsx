@@ -9,11 +9,6 @@ interface F1HeaderProps {
 }
 
 export default function F1Header({ 
-  trackName = "SILVERSTONE", 
-  sessionType = "QUALIFYING", 
-  lapTime = "1:42.123",
-  weather = "SUNNY",
-  teamColor = "#00D2BE"
 }: F1HeaderProps) {
   return (
     <div className="bg-black">

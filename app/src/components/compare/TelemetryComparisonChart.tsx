@@ -6,8 +6,8 @@ import { F1Driver } from '@/data/f1Data';
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 interface TelemetryComparisonChartProps {
-  data1: any[];
-  data2: any[];
+  data1: Plotly.Data[];
+  data2: Plotly.Data[];
   driver1: F1Driver;
   driver2: F1Driver;
   title: string;
@@ -28,12 +28,12 @@ export default function TelemetryComparisonChart({
   const combinedData = [
     ...data1.map(trace => ({
       ...trace,
-      line: { ...trace.line, color: driver1.teamColor, width: 3 },
+      line: { ...(trace as Plotly.ScatterData).line, color: driver1.teamColor, width: 3 },
       name: `${driver1.name} - ${trace.name}`
     })),
     ...data2.map(trace => ({
       ...trace,
-      line: { ...trace.line, color: driver2.teamColor, width: 3 },
+      line: { ...(trace as Plotly.ScatterData).line, color: driver2.teamColor, width: 3 },
       name: `${driver2.name} - ${trace.name}`
     }))
   ];
@@ -78,7 +78,7 @@ export default function TelemetryComparisonChart({
   return (
     <div className="bg-gray-800 border border-gray-600 rounded-lg p-4">
       <Plot
-        data={combinedData}
+        data={combinedData as Plotly.Data[]}
         layout={layout}
         config={config}
         style={{ width: '100%', height: '100%' }}

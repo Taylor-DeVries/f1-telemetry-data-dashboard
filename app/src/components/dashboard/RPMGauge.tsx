@@ -34,7 +34,7 @@ export default function RPMGauge({
       
       {/* RPM Markings */}
       <div className="absolute inset-0">
-        {[0, 25, 50, 75, 100].map((mark, index) => {
+        {[0, 25, 50, 75, 100].map((mark) => {
           const angle = (mark / 100) * 180 - 90;
           const x = 50 + 40 * Math.cos((angle * Math.PI) / 180);
           const y = 50 + 40 * Math.sin((angle * Math.PI) / 180);

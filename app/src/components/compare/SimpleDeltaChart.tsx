@@ -1,12 +1,13 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { TelemetryData } from '@/lib/api';
 
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 interface SimpleDeltaChartProps {
-  lap1Data: any;
-  lap2Data: any;
+  lap1Data: TelemetryData;
+  lap2Data: TelemetryData;
   driver1Name: string;
   driver2Name: string;
   height?: number;
@@ -47,7 +48,7 @@ export default function SimpleDeltaChart({
           width: 3,
           shape: 'spline' as const
         },
-        fill: 'tonexty',
+        fill: 'tonexty' as const,
         fillcolor: 'rgba(0, 210, 190, 0.1)',
         hovertemplate: `<b>Time Difference</b><br>` +
                       `Lap Progress: %{x:.1f}%<br>` +
@@ -76,7 +77,6 @@ export default function SimpleDeltaChart({
       titlefont: { color: 'white' },
       tickfont: { color: 'white' },
       gridcolor: '#374151',
-      zerolinecolor: '#374151',
       showgrid: true,
       zeroline: true,
       zerolinecolor: '#6B7280'
@@ -88,7 +88,7 @@ export default function SimpleDeltaChart({
     height: height,
     shapes: [
       {
-        type: 'line',
+        type: 'line' as const,
         x0: 0,
         x1: 100,
         y0: 0,
@@ -96,7 +96,7 @@ export default function SimpleDeltaChart({
         line: {
           color: '#6B7280',
           width: 2,
-          dash: 'dash'
+          dash: 'dash' as const
         }
       }
     ]
@@ -106,7 +106,7 @@ export default function SimpleDeltaChart({
     <div className="bg-gray-800 border border-gray-600 rounded-lg p-4">
       <div className="bg-gray-900 rounded-lg p-2">
         <Plot
-          data={getDeltaData()}
+          data={getDeltaData() as Plotly.Data[]}
           layout={layout}
           config={{
             displayModeBar: false,

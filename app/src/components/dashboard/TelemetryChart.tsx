@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 interface TelemetryChartProps {
-  data: any[];
+  data: Plotly.Data[];
   title: string;
   height?: number;
   showLegend?: boolean;
@@ -32,11 +32,11 @@ export default function TelemetryChart({
           data={data.map((trace, index) => ({
             ...trace,
             line: {
-              ...trace.line,
+              ...(trace as Plotly.ScatterData).line,
               color: colors[index % colors.length],
               width: 2
             }
-          }))}
+          })) as Plotly.Data[]}
           layout={{
             title: { text: '' },
             xaxis: { 

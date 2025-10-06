@@ -36,7 +36,7 @@ export default function DataExplanation() {
             <span className="text-cyan-400 font-semibold">Throttle/Brake:</span> Calculated from speed changes - throttle when accelerating, brake when decelerating, with driver style affecting timing.
           </div>
           <div>
-            <span className="text-cyan-400 font-semibold">Gear Selection:</span> Automatically calculated based on speed using F1's 8-speed gearbox ratios.
+            <span className="text-cyan-400 font-semibold">Gear Selection:</span> Automatically calculated based on speed using F1&apos;s 8-speed gearbox ratios.
           </div>
           <div>
             <span className="text-cyan-400 font-semibold">RPM:</span> Generated based on gear and speed, with realistic engine characteristics and noise.

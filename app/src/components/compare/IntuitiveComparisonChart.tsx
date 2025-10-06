@@ -2,12 +2,13 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import { TelemetryData } from '@/lib/api';
 
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 interface IntuitiveComparisonChartProps {
-  lap1Data: any;
-  lap2Data: any;
+  lap1Data: TelemetryData;
+  lap2Data: TelemetryData;
   driver1Name: string;
   driver2Name: string;
   driver1Color: string;

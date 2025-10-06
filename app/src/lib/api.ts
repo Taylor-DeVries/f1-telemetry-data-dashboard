@@ -7,6 +7,7 @@ export interface TelemetryData {
   metadata?: {
     track_name: string;
     max_speed: number;
+    max_rpm: number;
     lap_time: number;
     driver_style: string;
     driver_id?: string;

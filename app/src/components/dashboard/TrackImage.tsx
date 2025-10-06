@@ -8,7 +8,7 @@ interface TrackImageProps {
   teamColor: string;
 }
 
-export default function TrackImage({ track, teamColor }: TrackImageProps) {
+export default function TrackImage({ track }: TrackImageProps) {
   return (
     <div className="bg-gray-900 border border-gray-700 rounded-lg p-4 h-full">
       <div className="text-center mb-4">

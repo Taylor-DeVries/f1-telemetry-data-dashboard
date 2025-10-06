@@ -1,12 +1,13 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { TelemetryData } from '@/lib/api';
 
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 interface DeltaTimeChartProps {
-  lap1Data: any;
-  lap2Data: any;
+  lap1Data: TelemetryData;
+  lap2Data: TelemetryData;
   driver1Name: string;
   driver2Name: string;
   height?: number;
@@ -24,8 +25,8 @@ export default function DeltaTimeChart({
   // Calculate delta time (lap1 - lap2)
   const time1 = Object.values(lap1Data.full_data.time || {}) as number[];
   const time2 = Object.values(lap2Data.full_data.time || {}) as number[];
-  const speed1 = Object.values(lap1Data.full_data.speed || {}) as number[];
-  const speed2 = Object.values(lap2Data.full_data.speed || {}) as number[];
+  // const speed1 = Object.values(lap1Data.full_data.speed || {}) as number[];
+  // const speed2 = Object.values(lap2Data.full_data.speed || {}) as number[];
 
   const minLength = Math.min(time1.length, time2.length);
   const deltaTime = [];
@@ -48,7 +49,7 @@ export default function DeltaTimeChart({
         color: '#06B6D4', 
         width: 3 
       },
-      fill: 'tonexty',
+      fill: 'tonexty' as const,
       fillcolor: 'rgba(6, 182, 212, 0.1)'
     }
   ];
@@ -82,8 +83,8 @@ export default function DeltaTimeChart({
       {
         x: 0.02,
         y: 0.95,
-        xref: 'paper',
-        yref: 'paper',
+        xref: 'paper' as const,
+        yref: 'paper' as const,
         text: 'FASTER',
         showarrow: false,
         font: { color: 'green', size: 12 },
@@ -94,8 +95,8 @@ export default function DeltaTimeChart({
       {
         x: 0.02,
         y: 0.05,
-        xref: 'paper',
-        yref: 'paper',
+        xref: 'paper' as const,
+        yref: 'paper' as const,
         text: 'SLOWER',
         showarrow: false,
         font: { color: 'red', size: 12 },
@@ -114,7 +115,7 @@ export default function DeltaTimeChart({
   return (
     <div className="bg-gray-800 border border-gray-600 rounded-lg p-4">
       <Plot
-        data={data}
+        data={data as Plotly.Data[]}
         layout={layout}
         config={config}
         style={{ width: '100%', height: '100%' }}

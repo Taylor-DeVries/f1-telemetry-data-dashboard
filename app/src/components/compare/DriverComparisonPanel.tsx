@@ -18,8 +18,8 @@ export default function DriverComparisonPanel({
   maxSpeed,
   fullThrottle,
   heavyBraking,
-  cornering,
-  side
+  cornering
+  // side
 }: DriverComparisonPanelProps) {
   return (
     <div className="bg-gray-900 border border-gray-700 rounded-lg p-4">

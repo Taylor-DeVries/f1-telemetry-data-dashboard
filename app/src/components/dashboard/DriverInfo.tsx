@@ -18,7 +18,7 @@ export default function DriverInfo({
   lapTime = "1:29.158",
   maxSpeed = 320,
   teamColor = "#00D2BE",
-  teamSecondaryColor = "#00A8A3",
+  // teamSecondaryColor = "#00A8A3",
   currentSpeed = 0,
   currentRpm = 0,
   currentGear = 1

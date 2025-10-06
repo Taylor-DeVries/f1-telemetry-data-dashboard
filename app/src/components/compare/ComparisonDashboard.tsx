@@ -3,9 +3,7 @@
 import { useState, useEffect } from 'react';
 import { TelemetryData } from '@/lib/api';
 import { F1Driver, F1Track, F1_DRIVERS, F1_TRACKS } from '@/data/f1Data';
-import F1Header from '../dashboard/F1Header';
 import DriverComparisonPanel from './DriverComparisonPanel';
-import TrackMap from './TrackMap';
 import IntuitiveComparisonChart from './IntuitiveComparisonChart';
 import SimpleDeltaChart from './SimpleDeltaChart';
 import LapComparisonGenerator from '../LapComparisonGenerator';
@@ -32,15 +30,15 @@ export default function ComparisonDashboard({ lap1Data: initialLap1Data, lap2Dat
   // Update drivers and track when data changes
   useEffect(() => {
     if (lap1Data?.metadata?.driver_id) {
-      const driver = F1_DRIVERS.find(d => d.id === lap1Data.metadata.driver_id);
+      const driver = F1_DRIVERS.find(d => d.id === lap1Data.metadata?.driver_id);
       if (driver) setDriver1(driver);
     }
     if (lap2Data?.metadata?.driver_id) {
-      const driver = F1_DRIVERS.find(d => d.id === lap2Data.metadata.driver_id);
+      const driver = F1_DRIVERS.find(d => d.id === lap2Data.metadata?.driver_id);
       if (driver) setDriver2(driver);
     }
     if (lap1Data?.metadata?.track_id) {
-      const track = F1_TRACKS.find(t => t.id === lap1Data.metadata.track_id);
+      const track = F1_TRACKS.find(t => t.id === lap1Data.metadata?.track_id);
       if (track) setSelectedTrack(track);
     }
   }, [lap1Data, lap2Data]);
@@ -93,7 +91,7 @@ export default function ComparisonDashboard({ lap1Data: initialLap1Data, lap2Dat
   const time1 = lap1Data?.metadata?.lap_time || 89.158;
   const time2 = lap2Data?.metadata?.lap_time || 89.340;
   const gap = time1 - time2;
-  const gapString = gap < 0 ? `${gap.toFixed(3)}s` : `+${gap.toFixed(3)}s`;
+  // const gapString = gap < 0 ? `${gap.toFixed(3)}s` : `+${gap.toFixed(3)}s`;
 
   return (
     <div className="min-h-screen bg-black">

@@ -39,12 +39,12 @@ export default function F1Dashboard({ telemetryData }: F1DashboardProps) {
 
     // Set driver and track from metadata if available
     if (telemetryData.metadata) {
-      if (telemetryData.metadata.driver_id) {
-        const driver = F1_DRIVERS.find(d => d.id === telemetryData.metadata.driver_id);
+      if (telemetryData.metadata?.driver_id) {
+        const driver = F1_DRIVERS.find(d => d.id === telemetryData.metadata?.driver_id);
         if (driver) setSelectedDriver(driver);
       }
-      if (telemetryData.metadata.track_id) {
-        const track = F1_TRACKS.find(t => t.id === telemetryData.metadata.track_id);
+      if (telemetryData.metadata?.track_id) {
+        const track = F1_TRACKS.find(t => t.id === telemetryData.metadata?.track_id);
         if (track) setSelectedTrack(track);
       }
     }
@@ -104,7 +104,7 @@ export default function F1Dashboard({ telemetryData }: F1DashboardProps) {
   const chartData = selectedChannels.map(channel => {
     const values = Object.values(telemetryData.full_data[channel] || {}) as number[];
     const maxIndex = isLive ? currentDataIndex + 1 : values.length;
-    let displayValues = values.slice(0, maxIndex);
+    const displayValues = values.slice(0, maxIndex);
     
     // Apply manual overrides to chart data for consistency
     if (channel === 'speed' && manualSpeed !== null) {
@@ -167,7 +167,7 @@ export default function F1Dashboard({ telemetryData }: F1DashboardProps) {
     return sectors;
   };
 
-  const sectorData = calculateSectorData();
+  const sectorData = calculateSectorData().filter((sector): sector is NonNullable<typeof sector> => sector !== null);
 
   return (
     <div className="min-h-screen bg-black">
