@@ -1,14 +1,10 @@
-# 🏎️ F1 Telemetry Dashboard
+# F1 Telemetry Dashboard
 
-A professional-grade full-stack web application for analyzing F1 racing telemetry data with interactive visualizations, lap comparisons, and race strategy insights. Built with Next.js API routes for seamless deployment and optimal performance.
+A full-stack web application for analyzing F1 racing telemetry data with interactive visualizations, lap comparisons, and race strategy insights. Built with Next.js API routes for seamless deployment and optimal performance.
 
 <img width="1241" height="767" alt="Screenshot 2025-10-02 at 10 51 45 PM" src="https://github.com/user-attachments/assets/8e682e27-1d1a-4570-beb8-9b089b160776" />
 
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Visit_Now-green?style=for-the-badge)](https://f1-telemetry-dashboard.vercel.app/)
-![F1 Telemetry Dashboard](https://img.shields.io/badge/F1-Telemetry%20Dashboard-red?style=for-the-badge&logo=formula1)
-![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=flat-square&logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)
-![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=flat-square&logo=vercel)
 
 ## 🌟 Features
 
@@ -19,8 +15,6 @@ A professional-grade full-stack web application for analyzing F1 racing telemetr
 - ✅ **Multi-Metric Analysis**: Visualize speed, throttle, brake, gear, RPM, tire temperatures, and more
 - ✅ **Sector Timing Breakdown**: Analyze lap performance by sectors with detailed metrics
 - ✅ **Lap Comparison**: Side-by-side comparison of two laps with overlay charts
-- ✅ **Collapsible Analysis Guides**: Comprehensive race strategy and optimization tips
-- ✅ **Responsive Design**: Beautiful F1-themed UI that works on all devices
 
 ### Analysis Features
 - 📊 Multi-channel overlay analysis
@@ -28,7 +22,6 @@ A professional-grade full-stack web application for analyzing F1 racing telemetr
 - 🔥 Tire temperature monitoring
 - ⚡ RPM and throttle optimization
 - 🎯 Braking point identification
-- 💡 Pro tips and engineering insights
 
 ## 🛠️ Tech Stack
 
@@ -45,7 +38,7 @@ A professional-grade full-stack web application for analyzing F1 racing telemetr
 ## 📊 Demo Data & Sample Files
 
 ### Built-in Demo Data Generator
-The application includes a sophisticated demo data generator that creates realistic F1 telemetry data with customizable parameters:
+The application includes a demo data generator that creates realistic F1 telemetry data with customizable parameters:
 - **Track Configuration**: Custom track names and lap times
 - **Vehicle Parameters**: Max speed, RPM, gear count
 - **Driver Style**: Aggressive, balanced, or smooth driving characteristics
@@ -68,7 +61,6 @@ Upload CSV files with the following columns:
 - Click "Generate Demo Data" on the home page
 - Customize track parameters (speed, RPM, lap time, driver style)
 - Generate realistic F1 telemetry data instantly
-- Perfect for testing and showcasing the application
 
 ### 2. Upload Real Telemetry Data
 - Drag and drop a CSV file or click to browse
@@ -89,7 +81,7 @@ Upload CSV files with the following columns:
 - Identify differences in braking points, throttle, and speed
 
 ### 5. Optimize Race Strategy
-- Follow the comprehensive guides in the dashboard:
+- Follow the guides in the dashboard:
   1. Identify braking zones and optimal points
   2. Find optimal throttle application timing
   3. Manage RPM in the power band
