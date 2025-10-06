@@ -2,14 +2,18 @@
 
 import { useState } from 'react';
 import { TelemetryData, api } from '@/lib/api';
+import { F1Driver, F1Track, F1_DRIVERS, F1_TRACKS } from '@/data/f1Data';
 
 interface DemoDataGeneratorProps {
   onDataGenerated: (data: TelemetryData) => void;
   onClose: () => void;
+  analysisType?: 'single' | 'comparison';
 }
 
-export default function DemoDataGenerator({ onDataGenerated, onClose }: DemoDataGeneratorProps) {
+export default function DemoDataGenerator({ onDataGenerated, onClose, analysisType = 'single' }: DemoDataGeneratorProps) {
   const [loading, setLoading] = useState(false);
+  const [selectedDriver, setSelectedDriver] = useState<F1Driver>(F1_DRIVERS[2]); // Lewis Hamilton by default
+  const [selectedTrack, setSelectedTrack] = useState<F1Track>(F1_TRACKS[0]); // Silverstone by default
   const [params, setParams] = useState({
     max_speed: 320,
     max_rpm: 15000,
@@ -22,7 +26,17 @@ export default function DemoDataGenerator({ onDataGenerated, onClose }: DemoData
   const handleGenerate = async () => {
     setLoading(true);
     try {
-      const data = await api.generateDemoData(params);
+      // Update params with selected driver and track
+      const updatedParams = {
+        ...params,
+        track_name: selectedTrack.name,
+        driver_style: selectedDriver.name.includes('VERSTAPPEN') ? 'aggressive' : 
+                     selectedDriver.name.includes('HAMILTON') ? 'smooth' : 'balanced',
+        driver_id: selectedDriver.id,
+        track_id: selectedTrack.id
+      };
+      
+      const data = await api.generateDemoData(updatedParams);
       onDataGenerated(data);
     } catch (error) {
       console.error('Error generating demo data:', error);
@@ -42,9 +56,11 @@ export default function DemoDataGenerator({ onDataGenerated, onClose }: DemoData
               <svg className="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              Generate Demo Telemetry
+              {analysisType === 'comparison' ? 'Generate Comparison Data' : 'Generate Demo Telemetry'}
             </h2>
-            <p className="text-red-100 text-sm mt-1">Create realistic F1 data for testing</p>
+            <p className="text-red-100 text-sm mt-1">
+              {analysisType === 'comparison' ? 'Create data for lap comparison' : 'Create realistic F1 data for testing'}
+            </p>
           </div>
           <button
             onClick={onClose}
@@ -58,18 +74,49 @@ export default function DemoDataGenerator({ onDataGenerated, onClose }: DemoData
 
         {/* Form */}
         <div className="p-6 space-y-6">
-          {/* Track Name */}
+          {/* Driver Selection */}
           <div>
             <label className="block text-sm font-semibold text-gray-300 mb-2">
-              🏁 Track Name
+              👨‍💼 Select Driver
             </label>
-            <input
-              type="text"
-              value={params.track_name}
-              onChange={(e) => setParams({...params, track_name: e.target.value})}
+            <select
+              value={selectedDriver.id}
+              onChange={(e) => {
+                const driver = F1_DRIVERS.find(d => d.id === e.target.value);
+                if (driver) setSelectedDriver(driver);
+              }}
               className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-              placeholder="e.g., Monaco, Silverstone"
-            />
+            >
+              {F1_DRIVERS.map(driver => (
+                <option key={driver.id} value={driver.id}>
+                  #{driver.number} {driver.name} - {driver.team}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Track Selection */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-300 mb-2">
+              🏁 Select Track
+            </label>
+            <select
+              value={selectedTrack.id}
+              onChange={(e) => {
+                const track = F1_TRACKS.find(t => t.id === e.target.value);
+                if (track) setSelectedTrack(track);
+              }}
+              className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+            >
+              {F1_TRACKS.map(track => (
+                <option key={track.id} value={track.id}>
+                  {track.name} - {track.country} ({track.length}km, {track.turns} turns)
+                </option>
+              ))}
+            </select>
+            <p className="text-xs text-gray-400 mt-1">
+              {selectedTrack.description}
+            </p>
           </div>
 
           {/* Max Speed */}
@@ -134,21 +181,6 @@ export default function DemoDataGenerator({ onDataGenerated, onClose }: DemoData
             </div>
           </div>
 
-          {/* Number of Gears */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-300 mb-2">
-              ⚙️ Number of Gears
-            </label>
-            <select
-              value={params.num_gears}
-              onChange={(e) => setParams({...params, num_gears: parseInt(e.target.value)})}
-              className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-            >
-              <option value={6}>6 Gears</option>
-              <option value={7}>7 Gears</option>
-              <option value={8}>8 Gears (Modern F1)</option>
-            </select>
-          </div>
 
           {/* Driver Style */}
           <div>

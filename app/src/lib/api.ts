@@ -9,6 +9,8 @@ export interface TelemetryData {
     max_speed: number;
     lap_time: number;
     driver_style: string;
+    driver_id?: string;
+    track_id?: string;
   };
 }
 
@@ -19,6 +21,8 @@ export interface CarParameters {
   lap_time: number;
   track_name: string;
   driver_style: string;
+  driver_id?: string;
+  track_id?: string;
 }
 
 export const api = {

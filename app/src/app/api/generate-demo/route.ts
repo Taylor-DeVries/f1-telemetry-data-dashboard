@@ -3,10 +3,11 @@ import { NextRequest, NextResponse } from 'next/server';
 interface CarParameters {
   max_speed: number;
   max_rpm: number;
-  num_gears: number;
   lap_time: number;
   track_name: string;
   driver_style: string;
+  driver_id?: string;
+  track_id?: string;
 }
 
 export async function POST(request: NextRequest) {
@@ -51,18 +52,19 @@ export async function POST(request: NextRequest) {
       }
     }
     
-    // Gear calculation based on speed
+    // Gear calculation based on speed (F1 cars have 8 gears)
+    const numGears = 8;
     const gear: number[] = [];
     for (let i = 0; i < numPoints; i++) {
-      const gearRaw = 1 + (speed[i] / params.max_speed) * (params.num_gears - 1);
-      gear.push(Math.max(1, Math.min(params.num_gears, Math.floor(gearRaw))));
+      const gearRaw = 1 + (speed[i] / params.max_speed) * (numGears - 1);
+      gear.push(Math.max(1, Math.min(numGears, Math.floor(gearRaw))));
     }
     
     // RPM based on gear and speed
     const rpm: number[] = [];
     for (let i = 0; i < numPoints; i++) {
       const rpmBase = (speed[i] / params.max_speed) * params.max_rpm;
-      const gearFactor = gear[i] / params.num_gears;
+      const gearFactor = gear[i] / numGears;
       let rpmValue = rpmBase / (gearFactor + 0.3);
       rpmValue += (Math.random() - 0.5) * 200;
       rpm.push(Math.max(1000, Math.min(params.max_rpm, rpmValue)));
@@ -149,7 +151,9 @@ export async function POST(request: NextRequest) {
         track_name: params.track_name,
         max_speed: params.max_speed,
         lap_time: params.lap_time,
-        driver_style: params.driver_style
+        driver_style: params.driver_style,
+        driver_id: params.driver_id,
+        track_id: params.track_id
       }
     });
 
