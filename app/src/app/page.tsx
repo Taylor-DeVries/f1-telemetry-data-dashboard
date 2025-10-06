@@ -11,7 +11,6 @@ export default function Home() {
   const [success, setSuccess] = useState<string>('');
   const [showDemoGenerator, setShowDemoGenerator] = useState(false);
   const [showComparisonGenerator, setShowComparisonGenerator] = useState(false);
-  const [analysisType, setAnalysisType] = useState<'single' | 'comparison'>('single');
   const router = useRouter();
 
   const handleDemoDataGenerated = (data: TelemetryData) => {
@@ -77,10 +76,7 @@ export default function Home() {
         {/* Analysis Options with Previews */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Single Driver Analysis Preview */}
-          <div className="group cursor-pointer" onClick={() => {
-            setAnalysisType('single');
-            setShowDemoGenerator(true);
-          }}>
+          <div className="group cursor-pointer" onClick={() => setShowDemoGenerator(true)}>
             <div className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-xl overflow-hidden hover:border-red-500/50 transition-all duration-300 transform hover:scale-105">
               {/* Preview Header */}
               <div className="bg-gradient-to-r from-red-600 to-orange-500 p-6">

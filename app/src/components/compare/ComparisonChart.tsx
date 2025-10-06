@@ -6,8 +6,8 @@ import { F1Driver } from '@/data/f1Data';
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 interface ComparisonChartProps {
-  data1: any[];
-  data2: any[];
+  data1: Plotly.Data[];
+  data2: Plotly.Data[];
   driver1: F1Driver;
   driver2: F1Driver;
   title: string;
@@ -26,7 +26,7 @@ export default function ComparisonChart({
     ...data1.map(trace => ({
       ...trace,
       line: {
-        ...trace.line,
+        ...(trace as Plotly.ScatterData).line,
         color: driver1.teamColor,
         width: 3
       },
@@ -35,7 +35,7 @@ export default function ComparisonChart({
     ...data2.map(trace => ({
       ...trace,
       line: {
-        ...trace.line,
+        ...(trace as Plotly.ScatterData).line,
         color: driver2.teamColor,
         width: 3
       },
@@ -53,7 +53,7 @@ export default function ComparisonChart({
       
       <div className="h-96 bg-black rounded-lg p-2">
         <Plot
-          data={chartData}
+          data={chartData as Plotly.Data[]}
           layout={{
             title: { text: '' },
             xaxis: { 

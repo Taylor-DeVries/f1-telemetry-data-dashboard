@@ -1,14 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { TelemetryData } from '@/lib/api';
 import ComparisonDashboard from '@/components/compare/ComparisonDashboard';
 
 export default function CompareLaps() {
   const [lap1Data, setLap1Data] = useState<TelemetryData | null>(null);
   const [lap2Data, setLap2Data] = useState<TelemetryData | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     // Load data from sessionStorage
