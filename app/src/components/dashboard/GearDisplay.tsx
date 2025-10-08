@@ -7,20 +7,20 @@ interface GearDisplayProps {
 
 export default function GearDisplay({ gear, maxGear = 8 }: GearDisplayProps) {
   return (
-    <div className="flex flex-col items-center space-y-2">
+    <div className="flex flex-col items-center space-y-1 sm:space-y-2">
       {/* Gear Number */}
       <div className="relative">
-        <div className="w-20 h-20 bg-gray-900 border-2 border-gray-700 rounded-full flex items-center justify-center">
-          <span className="text-3xl font-black text-white font-mono">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-900 border border-gray-700 sm:border-2 rounded-full flex items-center justify-center">
+          <span className="text-2xl sm:text-3xl font-black text-white font-mono">
             {gear}
           </span>
         </div>
         {/* Gear indicator dots */}
-        <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+        <div className="absolute -bottom-1 sm:-bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-0.5 sm:space-x-1">
           {Array.from({ length: maxGear }, (_, i) => (
             <div
               key={i}
-              className={`w-1 h-1 rounded-full ${
+              className={`w-0.5 h-0.5 sm:w-1 sm:h-1 rounded-full ${
                 i < gear ? 'bg-white' : 'bg-gray-600'
               }`}
             />

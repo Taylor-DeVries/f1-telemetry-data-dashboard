@@ -20,14 +20,14 @@ export default function TelemetryChart({
   colors = ['#00D4FF', '#FF6B35', '#FFD23F', '#06FFA5', '#FF006E', '#8338EC']
 }: TelemetryChartProps) {
   return (
-    <div className="bg-gray-900 border border-gray-700 rounded-lg p-4">
-      <div className="mb-4">
-        <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
+    <div className="bg-gray-900 border border-gray-700 rounded-lg p-3 sm:p-4">
+      <div className="mb-3 sm:mb-4">
+        <h3 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wider">
           {title}
         </h3>
       </div>
       
-      <div className="h-96 bg-black rounded-lg p-2">
+      <div className="h-64 sm:h-80 lg:h-96 bg-black rounded-lg p-1 sm:p-2">
         <Plot
           data={data.map((trace, index) => ({
             ...trace,
@@ -40,20 +40,20 @@ export default function TelemetryChart({
           layout={{
             title: { text: '' },
             xaxis: { 
-              title: { text: 'LAP PROGRESSION', font: { color: '#9CA3AF', size: 10 } },
+              title: { text: 'LAP PROGRESSION', font: { color: '#9CA3AF', size: 9 } },
               gridcolor: '#374151',
               color: '#9CA3AF',
               showgrid: true,
               zeroline: false,
-              tickfont: { color: '#9CA3AF', size: 9 }
+              tickfont: { color: '#9CA3AF', size: 8 }
             },
             yaxis: { 
-              title: { text: 'VALUE', font: { color: '#9CA3AF', size: 10 } },
+              title: { text: 'VALUE', font: { color: '#9CA3AF', size: 9 } },
               gridcolor: '#374151',
               color: '#9CA3AF',
               showgrid: true,
               zeroline: false,
-              tickfont: { color: '#9CA3AF', size: 9 }
+              tickfont: { color: '#9CA3AF', size: 8 }
             },
             hovermode: 'x unified',
             showlegend: showLegend,
@@ -66,9 +66,9 @@ export default function TelemetryChart({
               bgcolor: 'rgba(0,0,0,0.8)',
               bordercolor: '#4B5563',
               borderwidth: 1,
-              font: { color: '#E5E7EB', size: 10 }
+              font: { color: '#E5E7EB', size: 9 }
             },
-            margin: { t: 20, r: 50, b: 50, l: 60 }
+            margin: { t: 15, r: 30, b: 40, l: 50 }
           }}
           config={{
             responsive: true,

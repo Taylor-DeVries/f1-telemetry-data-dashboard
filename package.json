@@ -1,7 +1,7 @@
 {
   "name": "f1-telemetry-dashboard",
   "version": "1.0.0",
-  "description": "A professional-grade F1 telemetry dashboard with interactive visualizations and race strategy insights",
+  "description": "An F1 telemetry dashboard with interactive visualizations and race strategy insights",
   "private": true,
   "scripts": {
     "dev": "cd app && npm run dev",
@@ -19,7 +19,7 @@
     "typescript",
     "motorsport"
   ],
-  "author": "Taylor De Vries",
+  "author": "Taylor DeVries",
   "license": "MIT",
   "repository": {
     "type": "git",

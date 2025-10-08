@@ -12,16 +12,16 @@ export default function F1Header({
 }: F1HeaderProps) {
   return (
     <div className="bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         {/* Header */}
-        <div className="flex items-center py-4">
+        <div className="flex items-center py-3 sm:py-4">
           {/* F1 Logo */}
-          <div className="flex items-center space-x-4">
-            <div className="text-white font-black text-2xl">
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            <div className="text-white font-black text-xl sm:text-2xl">
               <span className="text-red-600">F1</span>
             </div>
-            <div className="h-8 w-px bg-gray-600"></div>
-            <div className="text-white font-bold text-lg">
+            <div className="h-6 sm:h-8 w-px bg-gray-600"></div>
+            <div className="text-white font-bold text-sm sm:text-base lg:text-lg">
               TELEMETRY DASHBOARD
             </div>
           </div>
